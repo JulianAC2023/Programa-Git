@@ -10,77 +10,75 @@
 <body>
 
     <!-- Botones de redes sociales -->
-<div class="redes-sociales">
-    <a href="https://www.facebook.com/" class="icon-facebook"></a>
-    <a href="https://x.com/" class="icon-twitter"></a>
-    <a href="https://www.instagram.com/" class="icon-instagram"></a>
-</div>
-
-<!-- Barra de navegación -->
-<nav>
-    <div class="container">
-        <ul>
-            <li><a href="Inicio.html">Inicio</a></li>
-            <li><a href="Plantas.html">Plantas</a></li>
-            <li><a href="Accesorios.html">Accesorios</a></li>
-            <li><a href="Abonos.html">Abonos</a></li>
-            <li><a href="Semillas.html">Semillas</a></li>
-            <li><a href="Herramientas.html">Herramientas</a></li>
-            <li><a href="Login.html">Iniciar Sesión</a></li>
-            <li><a href="Registro.html">Registrarse</a></li>
-            <li><a href="Carrito.html">Carrito</a></li>
-            <li><a href="Contacto.html">Contacto</a></li>
-        </ul>
+    <div class="redes-sociales">
+        <a href="https://www.facebook.com/" class="icon-facebook"></a>
+        <a href="https://x.com/" class="icon-twitter"></a>
+        <a href="https://www.instagram.com/" class="icon-instagram"></a>
     </div>
-</nav>
 
-<!-- Sección de registro de usuario -->
-<section id="Registro">
-    <div class="container">
-        <h4>Registrarse</h4>
-        <form action="Registro.php" method="post">
-            <div class="mb-3">
-                <label for="NombreUsuario" class="form-label">Nombre de Usuario:</label>
-                <input type="text" id="nombre_usuario" name="nombre_usuario" required class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="NombreCompleto" class="form-label">Nombre Completo:</label>
-                <input type="text" id="nombre_completo" name="nombre_completo" required class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="CorreoElectronico" class="form-label">Correo Electrónico:</label>
-                <input type="email" id="correo" name="correo" required class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="ContrasenaHash" class="form-label">Contraseña:</label>
-                <input type="password" id="contrasena" name="contrasena" required class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="Telefono" class="form-label">Número Telefónico:</label>
-                <input type="tel" id="telefono" name="telefono" required class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="Direccion" class="form-label">Dirección:</label>
-                <input type="text" id="direccion" name="direccion" required class="form-control">
-            </div>
-            <button type="submit" class="btn-register">Registrar</button>
-        </form>
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="Inicio.html">Inicio</a></li>
+                <li><a href="Plantas.html">Plantas</a></li>
+                <li><a href="Accesorios.html">Accesorios</a></li>
+                <li><a href="Abonos.html">Abonos</a></li>
+                <li><a href="Semillas.html">Semillas</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+                <li><a href="Login.html">Iniciar Sesión</a></li>
+                <li><a href="Registro.html">Registrarse</a></li>
+                <li><a href="Carrito.html">Carrito</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección de registro de usuario -->
+    <section id="Registro">
+        <div class="container">
+            <h4>Registrarse</h4>
+            <form action="Registro.php" method="POST">
+                <div class="mb-3">
+                    <label for="nombre_usuario" class="form-label">Nombre de Usuario:</label>
+                    <input type="text" id="nombre_usuario" name="nombre_usuario" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="nombre_completo" class="form-label">Nombre Completo:</label>
+                    <input type="text" id="nombre_completo" name="nombre_completo" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="contrasena" class="form-label">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Número Telefónico:</label>
+                    <input type="tel" id="telefono" name="telefono" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" required class="form-control">
+                </div>
+                <button type="submit" class="btn-register">Registrar</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="pantallazo">
+        <button id="toggleBtn">Hablar a WhatsApp</button>
+        <div id="contenido" style="display: none;">
+            <h2>¡Hola! ¿En qué puedo ayudarte?</h2>
+            <p>Escríbenos por WhatsApp para obtener asistencia inmediata.</p>
+            <a href="https://wa.me/tunumerodetelefono" target="_blank" class="whatsapp-btn">
+                <img src="Multimedia/Wathsapp.jpg" alt="WhatsApp" width="50px" height="50px">
+            </a>
+        </div>
     </div>
-</section>
 
-
-<div id="pantallazo">
-    <button id="toggleBtn">Hablar a WhatsApp</button>
-    <div id="contenido" style="display: none;">
-        <h2>¡Hola! ¿En qué puedo ayudarte?</h2>
-        <p>Escríbenos por WhatsApp para obtener asistencia inmediata.</p>
-        <!-- Aquí puedes colocar el enlace de WhatsApp -->
-        <a href="https://wa.me/tunumerodetelefono" target="_blank" class="whatsapp-btn"><img src="Multimedia/Wathsapp.jpg" alt="WhatsApp" width="50px" height="50px"></a>
-    </div>
-</div>
-
-</section>
-   
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -88,7 +86,6 @@
         </div>
     </footer>
 
-    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const toggleBtn = document.getElementById("toggleBtn");
@@ -104,9 +101,8 @@
                 }
             });
         });
-
     </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="Script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="Script.js"></script>
 </body>
 </html>

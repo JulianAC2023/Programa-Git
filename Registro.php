@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "proyecto vivero"; // Cambia esto al nombre de tu base de datos
+$dbname = "proyecto_vivero"; // Cambia esto al nombre de tu base de datos
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -13,13 +13,13 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Obtener datos del formulario
-$NombreUsuario = $_POST['nombre_usuario'];
-$NombreCompleto = $_POST['nombre_completo'];
-$CorreoElectronico = $_POST['correo'];
+// Validar y sanitizar datos
+$NombreUsuario = filter_var($_POST['nombre_usuario'], FILTER_SANITIZE_STRING);
+$NombreCompleto = filter_var($_POST['nombre_completo'], FILTER_SANITIZE_STRING);
+$CorreoElectronico = filter_var($_POST['correo'], FILTER_SANITIZE_EMAIL);
 $ContrasenaHash = password_hash($_POST['contrasena'], PASSWORD_BCRYPT); // Encriptar la contraseña
-$Telefono = $_POST['telefono'];
-$Direccion = $_POST['direccion'];
+$Telefono = filter_var($_POST['telefono'], FILTER_SANITIZE_STRING);
+$Direccion = filter_var($_POST['direccion'], FILTER_SANITIZE_STRING);
 
 // Preparar consulta SQL para insertar datos
 $sql = "INSERT INTO perfilesusuario (NombreUsuario, NombreCompleto, CorreoElectronico, ContrasenaHash, FechaRegistro, FechaUltimoAcceso, Rol, Estado, Direccion)
