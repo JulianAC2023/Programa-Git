@@ -61,6 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const botonVaciarCarrito = document.getElementById('vaciar-carrito');
     botonVaciarCarrito.addEventListener('click', vaciarCarrito);
 
-    mostrarCarrito();
+    // Maneja la confirmación de la compra
+    const botonConfirmarCompra = document.getElementById('confirmar-compra');
+    botonConfirmarCompra.addEventListener('click', () => {
+        const carrito = obtenerCarritoLocalStorage();
 
+        if (carrito.length > 0) {
+            // Aquí puedes enviar el carrito al servidor o procesar el pedido
+            alert('Compra confirmada. Gracias por tu compra!');
+            vaciarCarrito(); // Opcional: vaciar el carrito después de confirmar la compra
+        } else {
+            alert('Tu carrito está vacío.');
+        }
+    });
+
+    mostrarCarrito();
 });
