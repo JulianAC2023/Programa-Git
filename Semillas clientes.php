@@ -1,13 +1,32 @@
+<?php
+session_start();
+if (!isset($_SESSION['nombre_usuario'])) {
+    header("Location: Login.html");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semillas</title>
+    <title>'Pagina principal'</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Inicio</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <!-- Otros enlaces de navegación -->
+            </ul>
+            <span class="navbar-text">
+                Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre_usuario']); ?>
+            </span>
+        </div>
+    </nav>
 
     <!-- Botones de redes sociales -->
 <div class="redes-sociales">
@@ -20,14 +39,14 @@
 <nav>
     <div class="container">
         <ul>
-            <li><a href="Inicio clientes.html">Inicio</a></li>
-            <li><a href="Plantas clientes.html">Plantas</a></li>
-            <li><a href="Accesorios clientes.html">Accesorios</a></li>
-            <li><a href="Abonos clientes.html">Abonos</a></li>
-            <li><a href="Semillas clientes.html">Semillas</a></li>
-            <li><a href="Herramientas clientes.html">Herramientas</a></li>
-            <li><a href="Carrito clientes.html">Carrito</a></li>
-            <li><a href="Contacto clientes.html">Contacto</a></li>
+            <li><a href="Main.php">Inicio</a></li>
+            <li><a href="Plantas clientes.php">Plantas</a></li>
+            <li><a href="Accesorios clientes.php">Accesorios</a></li>
+            <li><a href="Abonos clientes.php">Abonos</a></li>
+            <li><a href="Semillas clientes.php">Semillas</a></li>
+            <li><a href="Herramientas clientes.php">Herramientas</a></li>
+            <li><a href="Carrito clientes.php">Carrito</a></li>
+            <li><a href="Contacto clientes.php">Contacto</a></li>
         </ul>
     </div>
 </nav>
@@ -211,6 +230,11 @@
 </div>
 
 </section>
+
+    <!-- Cerra sesion -->
+    <div class="container mt-5">
+        <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
+    </div>
        
     <!-- Footer -->
     <footer>

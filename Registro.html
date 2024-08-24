@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,7 @@
     <section id="Registro">
         <div class="container">
             <h4>Registrarse</h4>
-            <form action="Registro.php" method="POST">
+            <form action="http://localhost/Proyecto/Registro.php" method="POST">
                 <div class="mb-3">
                     <label for="nombre_usuario" class="form-label">Nombre de Usuario:</label>
                     <input type="text" id="nombre_usuario" name="nombre_usuario" required class="form-control">
@@ -57,11 +57,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Número Telefónico:</label>
-                    <input type="tel" id="telefono" name="telefono" required class="form-control">
+                    <input type="tel" id="telefono" name="telefono" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="direccion" class="form-label">Dirección:</label>
-                    <input type="text" id="direccion" name="direccion" required class="form-control">
+                    <input type="text" id="direccion" name="direccion" class="form-control">
                 </div>
                 <button type="submit" class="btn-register">Registrar</button>
             </form>

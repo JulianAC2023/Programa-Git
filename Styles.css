@@ -246,3 +246,18 @@ footer {
 .btn-register:hover {
     background-color: #218838; /* Color de fondo verde oscuro al pasar el ratón */
 }
+
+.btn-primary{
+    background-color: #A8D5BA; /* Color de fondo verde */
+    color: #fff; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor a mano al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */   
+}
+
+.btn-primary:hover{
+    background-color: #218838; /* Color de fondo verde oscuro al pasar el ratón */
+}
