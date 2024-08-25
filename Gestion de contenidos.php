@@ -11,7 +11,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina principal</title>
+    <title>Panel de Control</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="Styles.css">
 </head>
@@ -57,24 +57,8 @@ if (!isset($_SESSION['nombre_usuario'])) {
 
     <!-- Panel de Control -->
     <section id="dashboard" class="container my-4">
-        <h2>Estado de los pedidos</h2>
-
-        <!-- Filtros -->
-        <form method="GET" class="mb-4">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <label for="estado" class="form-label">Filtrar por Estado</label>
-                    <input type="text" id="estado" name="estado" class="form-control" value="<?php echo isset($_GET['estado']) ? htmlspecialchars($_GET['estado']) : ''; ?>" placeholder="Buscar por estado">
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="pedidoID" class="form-label">Filtrar por Pedido ID</label>
-                    <input type="text" id="pedidoID" name="pedidoID" class="form-control" value="<?php echo isset($_GET['pedidoID']) ? htmlspecialchars($_GET['pedidoID']) : ''; ?>" placeholder="Buscar por ID de pedido">
-                </div>
-                <div class="col-md-4 mb-3 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary">Buscar</button>
-                </div>
-            </div>
-        </form>
+        <h2>Panel de Control</h2>
+        <p>Visión general de la actividad reciente.</p>
 
         <!-- Contenedor centrado para la tabla -->
         <div class="container">
@@ -84,24 +68,8 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     // Incluir el archivo de conexión
                     include 'index.php'; // Asegúrate de que 'index.php' contiene la conexión correcta
 
-                    // Obtener filtros
-                    $estado = isset($_GET['estado']) ? $_GET['estado'] : '';
-                    $pedidoID = isset($_GET['pedidoID']) ? $_GET['pedidoID'] : '';
-
-                    // Crear consulta SQL con filtros
-                    $consulta = "SELECT a.PedidoID, b.NombreCompleto, c.Nombre AS Producto, a.Cantidad, a.FechaPedido, a.Total, a.Estado
-                                  FROM pedidos a
-                                  LEFT JOIN perfilesusuario b ON b.UsuarioID = a.UsuarioID
-                                  LEFT JOIN productos c ON c.ProductoID = a.ProductoID
-                                  WHERE 1=1";
-                    
-                    if ($estado) {
-                        $consulta .= " AND a.Estado LIKE '%" . $conexion->real_escape_string($estado) . "%'";
-                    }
-                    if ($pedidoID) {
-                        $consulta .= " AND a.PedidoID LIKE '%" . $conexion->real_escape_string($pedidoID) . "%'";
-                    }
-
+                    // Realizar una consulta
+                    $consulta = "SELECT * FROM productos"; // Asegúrate de que 'productos' es el nombre correcto de la tabla
                     $resultado = $conexion->query($consulta);
 
                     if (!$resultado) {
@@ -110,20 +78,10 @@ if (!isset($_SESSION['nombre_usuario'])) {
 
                     if ($resultado->num_rows > 0) {
                         echo "<table class='table table-striped table-bordered'>";
-                        echo "<thead><tr><th>PedidoID</th><th>NombreCompleto</th><th>Producto</th><th>Cantidad</th><th>FechaPedido</th><th>Total</th><th>Estado</th><th>Acción</th></tr></thead>";
+                        echo "<thead><tr><th>ProductoID</th><th>Nombre</th><th>Descripcion</th><th>Valor</th><th>CantidadDisponible</th><th>FechaRegistro</th><th>CategoriaID</th><th>ProveedorID</th></tr></thead>";
                         echo "<tbody>";
                         while ($fila = $resultado->fetch_assoc()) {
-                            $pedidoID = htmlspecialchars($fila["PedidoID"]);
-                            echo "<tr>
-                                    <td>" . $pedidoID . "</td>
-                                    <td>" . htmlspecialchars($fila["NombreCompleto"]) . "</td>
-                                    <td>" . htmlspecialchars($fila["Producto"]) . "</td>
-                                    <td>" . htmlspecialchars($fila["Cantidad"]) . "</td>
-                                    <td>" . htmlspecialchars($fila["FechaPedido"]) . "</td>
-                                    <td>" . htmlspecialchars($fila["Total"]) . "</td>
-                                    <td>" . htmlspecialchars($fila["Estado"]) . "</td>
-                                    <td><a href='editar_pedido.php?PedidoID=$pedidoID' class='btn btn-warning btn-sm'>Editar</a></td>
-                                  </tr>";
+                            echo "<tr><td>" . htmlspecialchars($fila["ProductoID"]) . "</td><td>" . htmlspecialchars($fila["Nombre"]) . "</td><td>" . htmlspecialchars($fila["Descripcion"]) . "</td><td>" . htmlspecialchars($fila["Valor"]) . "</td><td>" . htmlspecialchars($fila["CantidadDisponible"]) . "</td><td>" . htmlspecialchars($fila["FechaRegistro"]) . "</td><td>" . htmlspecialchars($fila["CategoriaID"]) . "</td><td>" . htmlspecialchars($fila["ProveedorID"]) . "</td></tr>";
                         }
                         echo "</tbody></table>";
                     } else {
@@ -149,5 +107,6 @@ if (!isset($_SESSION['nombre_usuario'])) {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="Script.js"></script>
 </body>
 </html>

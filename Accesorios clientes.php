@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['nombre_usuario'])) {
     header("Location: Login.html");
-    exit();
+    exit(); 
 }
 ?>
 
