@@ -37,7 +37,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#dashboard">Panel de Control</a>
+                    <a class="nav-link active" href="dashboard">Panel de Control</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Gestion de contenidos.php">Gestión de Contenidos</a>
