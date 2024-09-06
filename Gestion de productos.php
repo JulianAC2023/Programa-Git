@@ -58,7 +58,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
             <div class="row">
                 <div class="col-md-4">
                     <label for="productoID">ID producto</label>
-                    <select name="productoID" id="productoID" class="form-select">
+                    <select name="productoID" id="productoID" class="form-select form-select-sm">
                         <option value="">Todos</option>
                         <?php
                         include 'index.php';
@@ -71,7 +71,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                 </div>
                 <div class="col-md-4">
                     <label for="nombreProducto">Nombre producto</label>
-                    <select name="nombreProducto" id="nombreProducto" class="form-select">
+                    <select name="nombreProducto" id="nombreProducto" class="form-select form-select-sm">
                         <option value="">Todos</option>
                         <?php
                         $nombresProductos = $conexion->query("SELECT DISTINCT Nombre FROM productos");
@@ -83,35 +83,35 @@ if (!isset($_SESSION['nombre_usuario'])) {
                 </div>
                 <div class="col-md-4">
                     <label for="categoria">Categoría</label>
-                    <select name="categoria" id="categoria" class="form-select">
+                    <select name="categoria" id="categoria" class="form-select form-select-sm">
                         <option value="">Todas</option>
                         <?php
-                        $categorias = $conexion->query("SELECT DISTINCT CategoriaID FROM productos");
+                        $categorias = $conexion->query("SELECT CategoriaID, Nombre FROM categorias");
                         while ($categoria = $categorias->fetch_assoc()) {
-                            echo "<option value='" . $categoria['CategoriaID'] . "'>" . $categoria['CategoriaID'] . "</option>";
+                            echo "<option value='" . $categoria['CategoriaID'] . "'>" . $categoria['Nombre'] . "</option>";
                         }
                         ?>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="proveedor">Proveedor</label>
-                    <select name="proveedor" id="proveedor" class="form-select">
+                    <select name="proveedor" id="proveedor" class="form-select form-select-sm">
                         <option value="">Todos</option>
                         <?php
-                        $proveedores = $conexion->query("SELECT DISTINCT ProveedorID FROM productos");
+                        $proveedores = $conexion->query("SELECT DISTINCT ProveedorID, Nombre FROM proveedores");
                         while ($proveedor = $proveedores->fetch_assoc()) {
-                            echo "<option value='" . $proveedor['ProveedorID'] . "'>" . $proveedor['ProveedorID'] . "</option>";
+                            echo "<option value='" . $proveedor['ProveedorID'] . "'>" . $proveedor['Nombre'] . "</option>";
                         }
                         ?>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="min_valor">Valor mínimo</label>
-                    <input type="number" name="min_valor" id="min_valor" class="form-control">
+                    <input type="number" name="min_valor" id="min_valor" class="form-control form-select-sm">
                 </div>
                 <div class="col-md-4">
                     <label for="max_valor">Valor máximo</label>
-                    <input type="number" name="max_valor" id="max_valor" class="form-control">
+                    <input type="number" name="max_valor" id="max_valor" class="form-control form-select-sm">
                 </div>
             </div>
             <div class="row mt-4">

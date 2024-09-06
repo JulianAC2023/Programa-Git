@@ -64,7 +64,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
             <div class="row">
             <div class="col-md-4 mb-3">
                     <label for="estado" class="form-label">Filtrar por Estado</label>
-                    <select id="estado" name="estado" class="form-control">
+                    <select id="estado" name="estado" class="form-select">
                         <option value="">Selecciona un estado</option>
                         <?php
                         // Incluir el archivo de conexión
@@ -91,7 +91,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="pedidoID" class="form-label">Filtrar por Pedido ID</label>
-                    <input type="text" id="pedidoID" name="pedidoID" class="form-control" value="<?php echo isset($_GET['pedidoID']) ? htmlspecialchars($_GET['pedidoID']) : ''; ?>" placeholder="Buscar por ID de pedido">
+                    <input type="text" id="pedidoID" name="pedidoID" class="form-control form-control-sm " value="<?php echo isset($_GET['pedidoID']) ? htmlspecialchars($_GET['pedidoID']) : ''; ?>" placeholder="Buscar por ID de pedido">
                 </div>
                 <div class="col-md-4 mb-3 d-flex align-items-end">
                     <button type="submit" class="btn btn-primary">Buscar</button>
