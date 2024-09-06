@@ -72,7 +72,7 @@ if ($result->num_rows > 0) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Panel de Control</a>
+                    <a class="nav-link" href="Main_admin.php">Panel de Control</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Gestion de contenidos.php">Gestión de Contenidos</a>
@@ -94,11 +94,17 @@ if ($result->num_rows > 0) {
     <div class="container my-4">
         <h2>Editar Pedido</h2>
         <form method="POST">
-            <div class="mb-3">
-                <label for="estado" class="form-label">Estado</label>
-                <input type="text" id="estado" name="estado" class="form-control" value="<?php echo htmlspecialchars($pedido['Estado']); ?>" required>
-            </div>
-            <div class="mb-3">
+        <div class="mb-3">
+    <label for="estado" class="form-label">Estado</label>
+    <select id="estado" name="estado" class="form-control" required>
+        <option value="">Selecciona un estado</option>
+        <option value="Pendiente" <?php echo ($pedido['Estado'] === 'Pendiente') ? 'selected' : ''; ?>>Pendiente</option>
+        <option value="Enviado" <?php echo ($pedido['Estado'] === 'Enviado') ? 'selected' : ''; ?>>Enviado</option>
+        <option value="Entregado" <?php echo ($pedido['Estado'] === 'Entregado') ? 'selected' : ''; ?>>Entregado</option>
+        <option value="Cancelado" <?php echo ($pedido['Estado'] === 'Cancelado') ? 'selected' : ''; ?>>Cancelado</option>
+    </select>
+    </div>
+            <div class="col-md-4 mb-3 d-flex align-items-end">
                 <label for="cantidad" class="form-label">Cantidad</label>
                 <input type="number" id="cantidad" name="cantidad" class="form-control" value="<?php echo htmlspecialchars($pedido['Cantidad']); ?>" required>
             </div>
@@ -109,6 +115,11 @@ if ($result->num_rows > 0) {
             <input type="hidden" name="pedidoID" value="<?php echo htmlspecialchars($pedidoID); ?>">
             <button type="submit" class="btn btn-primary">Actualizar Pedido</button>
         </form>
+    </div>
+
+        <!-- Cerrar sesión -->
+    <div class="container mt-5">
+        <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
     </div>
 
     <!-- Footer -->

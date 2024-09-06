@@ -37,10 +37,10 @@ if (!isset($_SESSION['nombre_usuario'])) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="dashboard">Panel de Control</a>
+                    <a class="nav-link active" href="Main_admin.php">Gestion de Pedidos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Gestion de contenidos.php">Gestión de Contenidos</a>
+                    <a class="nav-link" href="Gestion de productos.php">Gestión de Productos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Gestion de usuarios.php">Gestión de Usuarios</a>
@@ -62,9 +62,32 @@ if (!isset($_SESSION['nombre_usuario'])) {
         <!-- Filtros -->
         <form method="GET" class="mb-4">
             <div class="row">
-                <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3">
                     <label for="estado" class="form-label">Filtrar por Estado</label>
-                    <input type="text" id="estado" name="estado" class="form-control" value="<?php echo isset($_GET['estado']) ? htmlspecialchars($_GET['estado']) : ''; ?>" placeholder="Buscar por estado">
+                    <select id="estado" name="estado" class="form-control">
+                        <option value="">Selecciona un estado</option>
+                        <?php
+                        // Incluir el archivo de conexión
+                        include 'index.php'; // Asegúrate de que 'index.php' contiene la conexión correcta
+
+                        // Consulta para obtener los estados únicos
+                        $estadoConsulta = "SELECT DISTINCT Estado FROM pedidos";
+                        $resultadoEstados = $conexion->query($estadoConsulta);
+
+                        if ($resultadoEstados) {
+                            while ($filaEstado = $resultadoEstados->fetch_assoc()) {
+                                $estadoValor = htmlspecialchars($filaEstado["Estado"]);
+                                $selected = (isset($_GET['estado']) && $_GET['estado'] == $estadoValor) ? 'selected' : '';
+                                echo "<option value=\"$estadoValor\" $selected>$estadoValor</option>";
+                            }
+                        } else {
+                            echo "<option value=''>Error al cargar estados</option>";
+                        }
+
+                        // Cerrar el resultado de la consulta
+                        $resultadoEstados->free();
+                        ?>
+                    </select>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="pedidoID" class="form-label">Filtrar por Pedido ID</label>
